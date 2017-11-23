@@ -44,6 +44,7 @@ captures/
 
 # Intellij
 *.iml
+.idea/
 .idea/workspace.xml
 .idea/tasks.xml
 .idea/gradle.xml
@@ -65,3 +66,5 @@ freeline.py
 freeline/
 freeline_project_description.json
 
+.idea/markdown-navigator.xml
+app/libs/
