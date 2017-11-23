@@ -3,7 +3,8 @@ package logistics.geely.com.myapplication;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import logistics.geely.com.myapplication.wedget.WebViewLinearLayout;
+import com.zd.webview.WebViewLinearLayout;
+
 
 public class MainActivity extends AppCompatActivity {
     private WebViewLinearLayout webViewRelativeLayout;

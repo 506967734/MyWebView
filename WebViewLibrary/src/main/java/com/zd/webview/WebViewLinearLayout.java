@@ -1,4 +1,4 @@
-package logistics.geely.com.myapplication.wedget;
+package com.zd.webview;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -8,10 +8,8 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
-import logistics.geely.com.myapplication.R;
-
 /**
- * Created by apple on 2017/11/22.
+ * Created by zhudi on 2017/11/22.
  */
 
 public class WebViewLinearLayout extends RelativeLayout {
@@ -37,7 +35,7 @@ public class WebViewLinearLayout extends RelativeLayout {
 
     private void initView(Context context) {
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
-        mContainer = (LinearLayout) LayoutInflater.from(context).inflate(R.layout.webview_relativelayout, null);
+        mContainer = (LinearLayout) LayoutInflater.from(context).inflate(R.layout.webview_linearlayout, null);
         addView(mContainer, lp);
 
 

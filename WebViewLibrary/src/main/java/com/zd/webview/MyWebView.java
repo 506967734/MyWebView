@@ -1,4 +1,4 @@
-package logistics.geely.com.myapplication.wedget;
+package com.zd.webview;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
@@ -8,7 +8,6 @@ import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.util.AttributeSet;
 import android.view.View;
-import android.webkit.JavascriptInterface;
 import android.webkit.JsPromptResult;
 import android.webkit.JsResult;
 import android.webkit.WebChromeClient;
@@ -24,7 +23,7 @@ import android.widget.ZoomButtonsController;
 import java.lang.reflect.Method;
 
 /**
- * Created by apple on 2017/11/22.
+ * Created by zhudi on 2017/11/22.
  */
 
 public class MyWebView extends WebView {
@@ -32,7 +31,7 @@ public class MyWebView extends WebView {
      * 加载完成
      */
     public interface WebViewErrorListener {
-        void error(MyWebView webview);
+        void error(MyWebView webView);
     }
 
     private ProgressBar progressBar;
@@ -62,7 +61,7 @@ public class MyWebView extends WebView {
     }
 
     private void initView() {
-        addJavascriptInterface(new ContactPlugin(), "Android"); // JS通过Interface调用Java
+//        addJavascriptInterface(new ContactPlugin(), "Android"); // JS通过Interface调用Java
         setWebViewClient(new WebViewClient() {
             // url拦截
             @Override
@@ -169,14 +168,14 @@ public class MyWebView extends WebView {
         });
     }
 
-    /**
-     * 界面回调
-     */
-    class ContactPlugin {
-        @JavascriptInterface
-        public void jsCallJava(String arg) {
-        }
-    }
+//    /**
+//     * 界面回调
+//     */
+//    class ContactPlugin {
+//        @JavascriptInterface
+//        public void jsCallJava(String arg) {
+//        }
+//    }
 
     @SuppressLint({"NewApi"})
     public void initializeOptions(Context context) {
