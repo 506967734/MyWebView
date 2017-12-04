@@ -14,36 +14,28 @@
         android:progressDrawable="@drawable/progress_horizontal_img"
         android:visibility="gone" />
 
-    <RelativeLayout
+
+    <LinearLayout
+        android:id="@+id/lilyError"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
 
-        <LinearLayout
-            android:id="@+id/lilyError"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:orientation="vertical">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/net_error_wifi" />
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/net_error_wifi" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dip"
+            android:gravity="center_horizontal"
+            android:text="网络异常或界面不存在~\n请点击界面刷新"
+            android:textColor="#999" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dip"
-                android:gravity="center_horizontal"
-                android:text="网络异常或界面不存在~\n请点击界面刷新"
-                android:textColor="#999" />
+    </LinearLayout>
 
-        </LinearLayout>
-
-
-        <com.zd.webview.MyWebView
-            android:id="@+id/wv"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </RelativeLayout>
 </LinearLayout>

@@ -3,9 +3,7 @@ package com.zd.webview;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
 /**
@@ -39,36 +37,36 @@ public class WebViewLinearLayout extends RelativeLayout {
         addView(mContainer, lp);
 
 
-        wv = (MyWebView) findViewById(R.id.wv);
-        /**
-         * 加载异常
-         */
-        wv.setWebViewErrorListener(new MyWebView.WebViewErrorListener() {
-            @Override
-            public void error(MyWebView webview) {
-                webview.loadUrl("about:blank");
-                lilyError.setVisibility(View.VISIBLE);
-                webview.setVisibility(View.GONE);
-            }
-        });
-
-        lilyError = (LinearLayout) findViewById(R.id.lilyError);
-        /**
-         * 点击刷新
-         */
-        lilyError.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                lilyError.setVisibility(View.GONE);
-                wv.setVisibility(View.VISIBLE);
-                wv.loadUrl(url);
-            }
-        });
-
-        /**
-         * 设置Webiew的进度条
-         */
-        wv.setProgressBarView((ProgressBar) findViewById(R.id.progressBar));
+//        wv = (MyWebView) findViewById(R.id.wv);
+//        /**
+//         * 加载异常
+//         */
+//        wv.setWebViewListener(new MyWebView.WebViewListener() {
+//            @Override
+//            public void error(MyWebView webview) {
+//                webview.loadUrl("about:blank");
+//                lilyError.setVisibility(View.VISIBLE);
+//                webview.setVisibility(View.GONE);
+//            }
+//        });
+//
+//        lilyError = (LinearLayout) findViewById(R.id.lilyError);
+//        /**
+//         * 点击刷新
+//         */
+//        lilyError.setOnClickListener(new OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                lilyError.setVisibility(View.GONE);
+//                wv.setVisibility(View.VISIBLE);
+//                wv.loadUrl(url);
+//            }
+//        });
+//
+//        /**
+//         * 设置Webiew的进度条
+//         */
+//        wv.setProgressBarView((ProgressBar) findViewById(R.id.progressBar));
     }
 
     /**

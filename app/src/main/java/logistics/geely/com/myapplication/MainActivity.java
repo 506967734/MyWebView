@@ -7,6 +7,7 @@ import com.zd.webview.WebViewLinearLayout;
 
 
 public class MainActivity extends AppCompatActivity {
+
     private WebViewLinearLayout webViewRelativeLayout;
 
     @Override
@@ -15,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         webViewRelativeLayout = (WebViewLinearLayout) findViewById(R.id.webViewLayout);
-        webViewRelativeLayout.loadUrl("https://www.baidu.com");
+        webViewRelativeLayout.loadUrl("https://www.baidu.com/");
     }
 
     @Override
