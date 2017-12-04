@@ -3,7 +3,7 @@ package com.zd.webview;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Build;
-import android.util.Log;
+import android.util.AttributeSet;
 import android.webkit.SslErrorHandler;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -36,6 +36,25 @@ public class MyWebView extends WebView {
 
     public MyWebView(Context context) {
         super(context);
+        this.context = context;
+        this.webViewClient = new MyWebViewClient(context, this);
+        this.webChromeClient = new MyWebChromeClient(context, this);
+        initView();
+        initializeOptions(context);
+    }
+
+
+    public MyWebView(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        this.context = context;
+        this.webViewClient = new MyWebViewClient(context, this);
+        this.webChromeClient = new MyWebChromeClient(context, this);
+        initView();
+        initializeOptions(context);
+    }
+
+    public MyWebView(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
         this.context = context;
         this.webViewClient = new MyWebViewClient(context, this);
         this.webChromeClient = new MyWebChromeClient(context, this);
@@ -121,7 +140,6 @@ public class MyWebView extends WebView {
     }
 
 
-
     @Override
     public void loadUrl(String url) {
         super.loadUrl(url);
@@ -137,11 +155,14 @@ public class MyWebView extends WebView {
     }
 
     public synchronized void showSslError(SslErrorHandler handler) {
-        //先getUrl 再getOriginalUrl
-        Log.e("showSslError", "showSslError---->" + getUrl() + "----" + getOriginalUrl());
-        //this.showErrorUrl(this);
-        //loadUrl(getUrl());
         handler.proceed();
-        //Log.e("showSslError", "showSslError---->" + getUrl() + "----" + getOriginalUrl());
+    }
+
+    /**
+     * destroyWebView
+     */
+    public void destroyWebView() {
+        clearHistory();
+        destroy();
     }
 }

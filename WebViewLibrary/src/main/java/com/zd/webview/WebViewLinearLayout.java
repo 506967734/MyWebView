@@ -3,7 +3,9 @@ package com.zd.webview;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
 /**
@@ -15,6 +17,7 @@ public class WebViewLinearLayout extends RelativeLayout {
     private LinearLayout mContainer;
     private LinearLayout lilyError;
     private MyWebView wv;
+    private ProgressBar progressBar;
 
     public WebViewLinearLayout(Context context) {
         super(context);
@@ -36,11 +39,11 @@ public class WebViewLinearLayout extends RelativeLayout {
         mContainer = (LinearLayout) LayoutInflater.from(context).inflate(R.layout.webview_linearlayout, null);
         addView(mContainer, lp);
 
-
-//        wv = (MyWebView) findViewById(R.id.wv);
-//        /**
-//         * 加载异常
-//         */
+        wv = (MyWebView) findViewById(R.id.wv);
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        /**
+         * 加载异常
+         */
 //        wv.setWebViewListener(new MyWebView.WebViewListener() {
 //            @Override
 //            public void error(MyWebView webview) {
@@ -49,24 +52,43 @@ public class WebViewLinearLayout extends RelativeLayout {
 //                webview.setVisibility(View.GONE);
 //            }
 //        });
-//
-//        lilyError = (LinearLayout) findViewById(R.id.lilyError);
-//        /**
-//         * 点击刷新
-//         */
-//        lilyError.setOnClickListener(new OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                lilyError.setVisibility(View.GONE);
-//                wv.setVisibility(View.VISIBLE);
-//                wv.loadUrl(url);
-//            }
-//        });
-//
-//        /**
-//         * 设置Webiew的进度条
-//         */
-//        wv.setProgressBarView((ProgressBar) findViewById(R.id.progressBar));
+
+        wv.setWebViewListener(new MyWebView.WebViewListener() {
+            @Override
+            public void error(MyWebView webView) {
+                webView.loadUrl("about:blank");
+                lilyError.setVisibility(View.VISIBLE);
+                webView.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void updata(int progress) {
+                progressBar.setProgress(progress);
+                if (progress < BrowserUnit.PROGRESS_MAX) {
+                    progressBar.setVisibility(View.VISIBLE);
+                } else {
+                    progressBar.setVisibility(View.GONE);
+                }
+            }
+        });
+
+        lilyError = (LinearLayout) findViewById(R.id.lilyError);
+        /**
+         * 点击刷新
+         */
+        lilyError.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                lilyError.setVisibility(View.GONE);
+                wv.setVisibility(View.VISIBLE);
+                wv.loadUrl(url);
+            }
+        });
+
+        /**
+         * 设置Webiew的进度条
+         */
+        //wv.setProgressBarView((ProgressBar) findViewById(R.id.progressBar));
     }
 
     /**

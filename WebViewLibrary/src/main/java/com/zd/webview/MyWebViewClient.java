@@ -28,7 +28,6 @@ public class MyWebViewClient extends WebViewClient {
         super();
         this.context = context;
         this.webView = webView;
-        Log.e("MyWebViewClient", "MyWebViewClient---->MyWebViewClient---->");
     }
 
     @Override
@@ -42,7 +41,6 @@ public class MyWebViewClient extends WebViewClient {
     // 页面开始加载
     @Override
     public void onPageStarted(WebView view, String url, Bitmap favicon) {
-        Log.e("NinjaWebViewClient", "NinjaWebViewClient---->onPageStarted---->" + url);
         view.setVisibility(View.VISIBLE);
         super.onPageStarted(view, url, favicon);
     }
@@ -50,7 +48,6 @@ public class MyWebViewClient extends WebViewClient {
     // 页面加载完成
     @Override
     public void onPageFinished(WebView view, String url) {
-        Log.e("NinjaWebViewClient", "NinjaWebViewClient---->onPageFinished---->" + url);
         super.onPageFinished(view, url);
     }
 

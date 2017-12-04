@@ -12,29 +12,26 @@ import com.zd.webview.MyWebView;
 public class Main2Activity extends AppCompatActivity {
 
     private LinearLayout lily;
-    private MyWebView webView;
+    //private MyWebView webView;
 
     private ProgressBar progressBar;
     private LinearLayout lilyError;
 
+    private MyWebView webView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
+        //setContentView(R.layout.activity_main2);
+        setContentView(R.layout.activity_main3);
 
         lily = (LinearLayout) findViewById(R.id.lily);
         lilyError = (LinearLayout) findViewById(R.id.lilyError);
 
-//        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
-//        LinearLayout mContainer = (LinearLayout) LayoutInflater.from(this).inflate(R.layout.activity_main, null);
-//
-//        webViewRelativeLayout = (WebViewLinearLayout) mContainer.findViewById(R.id.webViewLayout);
-//        webViewRelativeLayout.loadUrl("https://www.baidu.com/");
-//        lily.addView(mContainer, lp);
-
         progressBar = (ProgressBar) findViewById(com.zd.webview.R.id.progressBar);
 
-        webView = new MyWebView(this);
+        //webView = new MyWebView(this);
+        webView = (MyWebView) findViewById(R.id.wv);
         webView.setWebViewListener(new MyWebView.WebViewListener() {
             @Override
             public void error(MyWebView webView) {
@@ -66,6 +63,25 @@ public class Main2Activity extends AppCompatActivity {
             }
         });
         webView.loadUrl("http://ww.baidu.cm");
-        lily.addView(webView);
+        //lily.addView(webView);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (webView != null) {
+            webView.destroyWebView();
+        }
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        if (webView != null && webView.canGoBack()) {
+            webView.goBack();
+        } else {
+            finish();
+        }
     }
 }

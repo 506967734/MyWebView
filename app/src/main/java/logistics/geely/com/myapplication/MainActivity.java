@@ -21,13 +21,12 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-        super.onDestroy();
         webViewRelativeLayout.destroyWebView();
+        super.onDestroy();
     }
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
         if (webViewRelativeLayout.webViewCanBack()) {
             webViewRelativeLayout.webViewGoBack();
         } else {
